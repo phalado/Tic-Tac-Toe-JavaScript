@@ -120,14 +120,6 @@ function movement(value, board, playerTurn) {
     } else if (playerTurn.getPlayerTurn() === true) {
       document.getElementById('player-turn').innerHTML = `${board.getPlayerName(true)}'s turn`;
     } else {
-      // if (this.playerTurnAI.getPlayerTurnAI() === true) {
-      //   let random = Math.floor(Math.random() * 9);
-      //   while (board.getValue(random) !== 0) {
-      //     random = Math.floor(Math.random() * 9);
-      //   }
-      //   updateSpace(board, random, playerTurn.getPlayerTurn());
-      //   changeTurn(playerTurn);
-      // }
       render(board);
       setEventListeners(board, playerTurn);
       document.getElementById('player-turn').innerHTML = `${board.getPlayerName(false)}'s turn`;
@@ -142,33 +134,10 @@ function movement(value, board, playerTurn) {
   return playerTurn.getPlayerTurn();
 }
 
-// function playGameAI() {
-//   closeModelAI();
-//   board = init();
-//   playerTurn = initPlayTurn();
-//   playerTurnAI = initPlayTurnAI();
-//   playerTurnAI.setPlayerTurnAI(true);
-
-//   let pName = document.getElementById('player').value;
-
-//   if (pName === '') {
-//     pName = 'Player';
-//   }
-
-//   this.player1 = initPlayers(pName);
-//   this.player2 = initPlayers('AI');
-
-//   document.getElementById('player-turn').innerHTML = `${this.player1.name}'s turn`;
-
-//   render(board, playerTurn);
-// }
-
 function playGame() {
   closeModel();
   const board = init();
   const playerTurn = initPlayTurn();
-  // const playerTurnAI = initPlayTurnAI();
-  // playerTurnAI.setPlayerTurnAI(false);
 
   board.setPlayerName(document.getElementById('player1').value, true);
   board.setPlayerName(document.getElementById('player2').value, false);
@@ -189,7 +158,6 @@ function playGame() {
 
 function initialize() {
   document.getElementById('button-playGame').addEventListener('click', openModel);
-  document.getElementById('button-playGame-AI').addEventListener('click', openModelAI);
   document.getElementById('submit').addEventListener('click', playGame);
 }
 

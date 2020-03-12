@@ -52,11 +52,6 @@ function initPlayTurn() {
   return (playerTurn);
 }
 
-function playGame() {
-  const board = init();
-  const playerTurn = initPlayTurn();
-}
-
 function updateSpace(board, space, value) {
   board.changeSpace(space, value);
 }
@@ -87,18 +82,22 @@ function checkBoard(board) {
 
 function movement(value, board, playerTurn) {
   updateSpace(board, value, playerTurn.getPlayerTurn());
+  let result = playerTurn.getPlayerTurn();
 
   if (checkBoard(board) === false) {
     playerTurn.setPlayerTurn();
-  } else if (playerTurn.getPlayerTurn() === 1) {
-    return 'won1';
-  } else {
-    return 'won2';
+    if (board.board.every(value => value !== 0)) {
+      result = 'tie';
+    } else if (playerTurn.getPlayerTurn() === true) {
+      result = 'won1';
+    } else {
+      result = 'won2';
+    }
   }
-  return playerTurn.getPlayerTurn();
+
+  return result;
 }
 
-
 export {
-  gameBoard, playTurn, init, initPlayTurn, updateSpace, checkBoard, movement,
+  init, initPlayTurn, updateSpace, checkBoard, movement,
 };
