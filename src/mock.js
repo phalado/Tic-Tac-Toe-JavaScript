@@ -31,11 +31,11 @@ const gameBoard = () => {
   };
 };
 
-const playTurn = (value) => {
-  let playerTurn = value;
+const playTurn = () => {
+  let playerTurn = true;
 
-  const setPlayerTurn = (value) => {
-    playerTurn = value;
+  const setPlayerTurn = () => {
+    playerTurn = !playerTurn;
   };
   const getPlayerTurn = () => (playerTurn);
 
@@ -85,20 +85,11 @@ function checkBoard(board) {
   return false;
 }
 
-function changeTurn(playerTurn) {
-  if (playerTurn.getPlayerTurn() === 1) {
-    playerTurn.setPlayerTurn(2);
-  } else {
-    playerTurn.setPlayerTurn(1);
-  }
-  return playerTurn;
-}
-
 function movement(value, board, playerTurn) {
   updateSpace(board, value, playerTurn.getPlayerTurn());
 
   if (checkBoard(board) === false) {
-    playerTurn = changeTurn(playerTurn);
+    playerTurn.setPlayerTurn();
   } else if (playerTurn.getPlayerTurn() === 1) {
     return 'won1';
   } else {
@@ -109,5 +100,5 @@ function movement(value, board, playerTurn) {
 
 
 export {
-  gameBoard, playGame, init,
+  gameBoard, playTurn, init, initPlayTurn, updateSpace, checkBoard, movement,
 };

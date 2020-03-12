@@ -1,5 +1,5 @@
 import {
-  render, openModel, openModelAI, closeModel, closeModelAI, initialize,
+  render, openModel, openModelAI, closeModel, closeModelAI,
 } from './dom';
 
 const gameBoard = () => {
@@ -35,16 +35,11 @@ const gameBoard = () => {
   };
 };
 
-const player = (name) => {
-  const turn = (player) => (player.name);
-  return { name, turn };
-};
+const playTurn = () => {
+  let playerTurn = true;
 
-const playTurn = (value) => {
-  let playerTurn = value;
-
-  const setPlayerTurn = (value) => {
-    playerTurn = value;
+  const setPlayerTurn = () => {
+    playerTurn = !playerTurn;
   };
   const getPlayerTurn = () => (playerTurn);
 
@@ -68,7 +63,7 @@ function init() {
 }
 
 function initPlayTurn() {
-  const playerTurn = playTurn(1);
+  const playerTurn = playTurn();
   return (playerTurn);
 }
 
@@ -105,15 +100,6 @@ function checkBoard(board) {
   return false;
 }
 
-function changeTurn(playerTurn) {
-  if (playerTurn.getPlayerTurn() === 1) {
-    playerTurn.setPlayerTurn(2);
-  } else {
-    playerTurn.setPlayerTurn(1);
-  }
-  return playerTurn;
-}
-
 function setEventListeners(board, playerTurn) {
   for (let i = 0; i < 9; i += 1) {
     if (board.getValue(i) === 0) {
@@ -128,10 +114,10 @@ function movement(value, board, playerTurn) {
   render(board);
   setEventListeners(board, playerTurn);
   if (checkBoard(board) === false) {
-    playerTurn = changeTurn(playerTurn);
+    playerTurn.setPlayerTurn();
     if (board.board.every(value => value !== 0)) {
       document.getElementById('player-turn').innerHTML = 'Tied! start again';
-    } else if (playerTurn.getPlayerTurn() === 1) {
+    } else if (playerTurn.getPlayerTurn() === true) {
       document.getElementById('player-turn').innerHTML = `${board.getPlayerName(true)}'s turn`;
     } else {
       // if (this.playerTurnAI.getPlayerTurnAI() === true) {
@@ -146,7 +132,7 @@ function movement(value, board, playerTurn) {
       setEventListeners(board, playerTurn);
       document.getElementById('player-turn').innerHTML = `${board.getPlayerName(false)}'s turn`;
     }
-  } else if (playerTurn.getPlayerTurn() === 1) {
+  } else if (playerTurn.getPlayerTurn() === true) {
     document.getElementById('player-turn').innerHTML = `${board.getPlayerName(true)} won!!!`;
     render(board);
   } else {
@@ -201,10 +187,10 @@ function playGame() {
   setEventListeners(board, playerTurn);
 }
 
+function initialize() {
+  document.getElementById('button-playGame').addEventListener('click', openModel);
+  document.getElementById('button-playGame-AI').addEventListener('click', openModelAI);
+  document.getElementById('submit').addEventListener('click', playGame);
+}
 
 initialize();
-
-
-export {
-  gameBoard, playGame,
-};

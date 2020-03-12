@@ -5,7 +5,7 @@ function render(board) {
     for (let j = 0; j <= 2; j += 1) {
       if (board.getValue(i * 3 + j) === 0) {
         tableRows += `<th class="board-border" id="space-${i * 3 + j}"></th>`;
-      } else if (board.getValue(i * 3 + j) === 1) {
+      } else if (board.getValue(i * 3 + j) === true) {
         tableRows += '<th class="board-border text-center background-X"></th>';
       } else {
         tableRows += '<th class="board-border text-center background-O"></th>';
@@ -15,7 +15,6 @@ function render(board) {
   }
   document.getElementById('table-rows').innerHTML = tableRows;
 }
-
 
 function openModel() {
   document.getElementById('model').style.display = 'block';
@@ -33,13 +32,6 @@ function closeModelAI() {
   document.getElementById('modelAI').style.display = 'none';
 }
 
-function initialize() {
-  document.getElementById('button-playGame').addEventListener('click', openModel);
-  document.getElementById('button-playGame-AI').addEventListener('click', openModelAI);
-  document.getElementById('submit').addEventListener('click', playGame);
-}
-
-
 export {
-  render, openModel, openModelAI, closeModel, closeModelAI, initialize,
+  render, openModel, openModelAI, closeModel, closeModelAI,
 };
