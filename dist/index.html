@@ -22,7 +22,7 @@
           <label for="player2">Player 2 name:</label>
           <input type="text" id="player2" required>
         </fieldset>
-        <button type="button" id="submit" onclick="playGame()">
+        <button type="button" id="submit">
           Ok
         </button>
       </form>
@@ -34,15 +34,15 @@
           <label for="player">Your name: </label>
           <input type="text" id="player" required>
         </fieldset>
-        <button type="button" id="submit" onclick="playGameAI()">
+        <button type="button" id="submit-AI">
           Ok
         </button>
       </form>
     </div>
 
     <div>
-      <button id="button-playGame" type="submit" onclick="openModel()">Play Tic Tac Toe</button>
-      <button id="button-playGame" type="submit" onclick="openModelAI()">Play against AI</button>
+      <button id="button-playGame" type="submit">Play Tic Tac Toe</button>
+      <button id="button-playGame-AI" type="submit">Play against AI</button>
     </div>
 
     <div class="title">
@@ -58,8 +58,7 @@
       </table>
     </div>
 
-    <script src="js/index.js"></script>
-    <script src="js/dom.js"></script>
+    <script src="main.js"></script>
   </body>
 
 </html>
