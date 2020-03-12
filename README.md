@@ -1,5 +1,5 @@
 <br />
-<h1 align="center">Tic-Tac-Toe Javascript</h1>
+<h1 align="center">Tic-Tac-Toe Javascript - Testing</h1>
 
 
 <!-- TABLE OF CONTENTS -->
@@ -18,10 +18,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-A simple Tic-Tac-Toe app build with Javascript and HTML.
+This project is the test of the [Tic-Tac-Toe](https://github.com/FelipeEnne/Tic-Tac-Toe-JavaScript) game made by this project's contributors.
 
 
-Full task description: <a href="https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript"> Odin Project.</a>
+Full task description: <a href="https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/70449618/"> Microverse Onboard.</a>
 
 
 For a live version click [here](https://raw.githack.com/FelipeEnne/Tic-Tac-Toe-JavaScript/development/index.html).
