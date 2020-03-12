@@ -1,5 +1,5 @@
 import {
-  render, openModel, openModelAI, closeModel, closeModelAI,
+  render, openModel, openModelAI, closeModel, closeModelAI, initialize,
 } from './dom';
 
 const gameBoard = () => {
@@ -21,14 +21,18 @@ const gameBoard = () => {
   };
 
   const getPlayerName = (value) => {
+    let play;
     if (value === true) {
-      return play1;
+      play = play1;
     } else {
-      return play2;
+      play = play2;
     }
+    return play;
   };
 
-  return { board, changeSpace, getValue, play1, play2, setPlayerName, getPlayerName };
+  return {
+    board, changeSpace, getValue, play1, play2, setPlayerName, getPlayerName,
+  };
 };
 
 const player = (name) => {
@@ -197,10 +201,10 @@ function playGame() {
   setEventListeners(board, playerTurn);
 }
 
-function initialize() {
-  document.getElementById('button-playGame').addEventListener('click', openModel);
-  document.getElementById('button-playGame-AI').addEventListener('click', openModelAI);
-  document.getElementById('submit').addEventListener('click', playGame);
-}
 
 initialize();
+
+
+export {
+  gameBoard, playGame,
+};
