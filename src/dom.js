@@ -20,18 +20,10 @@ function openModel() {
   document.getElementById('model').style.display = 'block';
 }
 
-function openModelAI() {
-  document.getElementById('modelAI').style.display = 'block';
-}
-
 function closeModel() {
   document.getElementById('model').style.display = 'none';
 }
 
-function closeModelAI() {
-  document.getElementById('modelAI').style.display = 'none';
-}
-
 export {
-  render, openModel, openModelAI, closeModel, closeModelAI,
+  render, openModel, closeModel,
 };

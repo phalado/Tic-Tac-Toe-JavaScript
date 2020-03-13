@@ -6,6 +6,7 @@ const gameBoard = () => {
   const changeSpace = (space, value) => {
     board[space] = value;
   };
+
   const getValue = (space) => (board[space]);
 
   const setPlayerName = (name, value) => {
@@ -16,15 +17,7 @@ const gameBoard = () => {
     }
   };
 
-  const getPlayerName = (value) => {
-    let play;
-    if (value === true) {
-      play = play1;
-    } else {
-      play = play2;
-    }
-    return play;
-  };
+  const getPlayerName = (value) => (value ? play1 : play2);
 
   return {
     board, changeSpace, getValue, play1, play2, setPlayerName, getPlayerName,

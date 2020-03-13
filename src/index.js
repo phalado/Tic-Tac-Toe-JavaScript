@@ -1,5 +1,5 @@
 import {
-  render, openModel, openModelAI, closeModel, closeModelAI,
+  render, openModel, closeModel,
 } from './dom';
 
 const gameBoard = () => {
@@ -8,27 +8,20 @@ const gameBoard = () => {
   let play2 = 'Player2';
 
   const changeSpace = (space, value) => {
-    board[space] = value;
+    (board[space] = value);
   };
+
   const getValue = (space) => (board[space]);
 
   const setPlayerName = (name, value) => {
-    if (value === true) {
+    if (value) {
       play1 = name;
     } else {
       play2 = name;
     }
   };
 
-  const getPlayerName = (value) => {
-    let play;
-    if (value === true) {
-      play = play1;
-    } else {
-      play = play2;
-    }
-    return play;
-  };
+  const getPlayerName = (value) => (value ? play1 : play2);
 
   return {
     board, changeSpace, getValue, play1, play2, setPlayerName, getPlayerName,
@@ -41,20 +34,10 @@ const playTurn = () => {
   const setPlayerTurn = () => {
     playerTurn = !playerTurn;
   };
+
   const getPlayerTurn = () => (playerTurn);
 
   return { playerTurn, setPlayerTurn, getPlayerTurn };
-};
-
-const playTurnAI = (value) => {
-  let playerAI = value;
-
-  const setPlayerTurnAI = (value) => {
-    playerAI = value;
-  };
-  const getPlayerTurnAI = () => (playerAI);
-
-  return { playerAI, setPlayerTurnAI, getPlayerTurnAI };
 };
 
 function init() {
@@ -65,11 +48,6 @@ function init() {
 function initPlayTurn() {
   const playerTurn = playTurn();
   return (playerTurn);
-}
-
-function initPlayTurnAI() {
-  const playAI = playTurnAI(true);
-  return (playAI);
 }
 
 function updateSpace(board, space, value) {

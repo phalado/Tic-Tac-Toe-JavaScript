@@ -40,6 +40,8 @@ For a live version click [here](https://raw.githack.com/FelipeEnne/Tic-Tac-Toe-J
 
 <p>Just open the index.html file.</p>
 
+<p>To run the tests install the jest package and type 'npm test' in the terminal.
+
 
 ## License
 
